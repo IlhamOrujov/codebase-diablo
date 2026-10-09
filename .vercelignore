@@ -1,0 +1,32 @@
+# Production is deployed with the Vercel CLI from a local folder (`vercel --prod`).
+# The CLI uploads the working tree and does NOT read .gitignore, so everything
+# that must stay on this machine is listed here (gitignore syntax; a leading
+# "/" means the repository root).
+#
+# Keep e2e/: playwright.config.ts imports ./e2e/helpers and `next build`
+# type-checks it (tsconfig includes **/*.ts). Excluding it breaks the build.
+
+# Secrets and local environment (Vercel sets its own variables)
+.env*
+
+# Separate projects with their own deploys: the public site (Vercel project
+# diablo-site) and the Python engine
+/site/
+/engine/
+
+# The developer's local course: never uploaded, never built
+/learn/
+
+# Test and QA output, and the signed-in Playwright state
+/qa/
+/test-results/
+/playwright-report/
+/coverage/
+/e2e/.auth/
+
+# Local build and tool state
+/.next/
+node_modules/
+/node_modules.nosync/
+*.tsbuildinfo
+/.claude/

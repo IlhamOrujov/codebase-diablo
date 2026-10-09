@@ -1,0 +1,411 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────────────────────
+   Colour: Diablo's own system (the same tokens as the product).
+   Burgundy #57001A and cream #FCF8EF; warm neutrals; a warm plum
+   dark theme. Everything else here follows Apple's interface
+   principles: system type with size-specific tracking, materials,
+   and motion that respects the person's settings.
+   ─────────────────────────────────────────────────────────────── */
+
+:root {
+  --brand-burgundy: #57001a;
+  --brand-cream: #fcf8ef;
+
+  --bg: #f8f7f4;
+  --surface: #ffffff;
+  --surface-subtle: #f3f1ed;
+  --surface-sunken: #efece6;
+  --line: #e5e1da;
+  --line-strong: #d6d0c6;
+  --ink: #211c1d;
+  --ink-2: #57514f;
+  --ink-3: #6f6a69;
+
+  --accent: #57001a;
+  --accent-hover: #720025;
+  --accent-ink: #fcf8ef;
+  --accent-text: #6b0a28;
+  --accent-tint: rgb(87 0 26 / 0.07);
+  --accent-tint-2: rgb(87 0 26 / 0.13);
+  --highlight: #fcf8ef;
+  --highlight-line: #e6d9c2;
+
+  --ok: #3e6a4c;
+  --warn: #8a5a12;
+  --bad: #8f1d2c;
+
+  --shadow-2: 0 1px 0 rgb(33 28 29 / 0.03), 0 8px 24px -8px rgb(33 28 29 / 0.16);
+  --shadow-3: 0 24px 64px -16px rgb(33 28 29 / 0.28), 0 0 0 1px rgb(33 28 29 / 0.06);
+
+  /* Materials: a translucent layer over content. */
+  --material: rgb(248 247 244 / 0.72);
+  --material-thick: rgb(255 255 255 / 0.86);
+  --scrim: rgb(23 19 21 / 0.32);
+
+  color-scheme: light;
+}
+
+/* The warm plum theme: the whole page in dark mode, and the
+   "measures" band in light mode. */
+.theme-dark {
+  --bg: #171315;
+  --surface: #211a1d;
+  --surface-subtle: #1c1619;
+  --surface-sunken: #140f12;
+  --line: #3a3033;
+  --line-strong: #4a3e42;
+  --ink: #f8f3ea;
+  --ink-2: #beb5b0;
+  --ink-3: #968c88;
+  --accent: #7a0a2e;
+  --accent-hover: #8d1438;
+  --accent-ink: #fcf8ef;
+  --accent-text: #e7a6b8;
+  --accent-tint: rgb(231 166 184 / 0.08);
+  --accent-tint-2: rgb(231 166 184 / 0.15);
+  --highlight: #33251f;
+  --highlight-line: #5e4535;
+  --ok: #8fbf9c;
+  --warn: #d9a75a;
+  --bad: #ec8f9c;
+  --shadow-2: 0 10px 30px -10px rgb(0 0 0 / 0.6), 0 0 0 1px rgb(255 240 230 / 0.04);
+  --shadow-3: 0 30px 80px -20px rgb(0 0 0 / 0.75), 0 0 0 1px rgb(255 240 230 / 0.06);
+  --material: rgb(23 19 21 / 0.7);
+  --material-thick: rgb(33 26 29 / 0.88);
+  --scrim: rgb(0 0 0 / 0.5);
+  color-scheme: dark;
+  color: var(--ink);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #171315;
+    --surface: #211a1d;
+    --surface-subtle: #1c1619;
+    --surface-sunken: #140f12;
+    --line: #3a3033;
+    --line-strong: #4a3e42;
+    --ink: #f8f3ea;
+    --ink-2: #beb5b0;
+    --ink-3: #968c88;
+    --accent: #7a0a2e;
+    --accent-hover: #8d1438;
+    --accent-ink: #fcf8ef;
+    --accent-text: #e7a6b8;
+    --accent-tint: rgb(231 166 184 / 0.08);
+    --accent-tint-2: rgb(231 166 184 / 0.15);
+    --highlight: #33251f;
+    --highlight-line: #5e4535;
+    --ok: #8fbf9c;
+    --warn: #d9a75a;
+    --bad: #ec8f9c;
+    --shadow-2: 0 10px 30px -10px rgb(0 0 0 / 0.6), 0 0 0 1px rgb(255 240 230 / 0.04);
+    --shadow-3: 0 30px 80px -20px rgb(0 0 0 / 0.75), 0 0 0 1px rgb(255 240 230 / 0.06);
+    --material: rgb(23 19 21 / 0.7);
+    --material-thick: rgb(33 26 29 / 0.88);
+    --scrim: rgb(0 0 0 / 0.5);
+    color-scheme: dark;
+  }
+  /* In dark mode the band sits one step deeper than the page. */
+  .theme-dark {
+    --bg: #110d0f;
+    --surface: #1c1619;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-subtle: var(--surface-subtle);
+  --color-sunken: var(--surface-sunken);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-text: var(--accent-text);
+  --color-accent-tint: var(--accent-tint);
+  --color-accent-tint-2: var(--accent-tint-2);
+  --color-highlight: var(--highlight);
+  --color-highlight-line: var(--highlight-line);
+  --color-burgundy: var(--brand-burgundy);
+  --color-cream: var(--brand-cream);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+
+  /* The platform's own type first: it ships optical sizes and tracking tables. */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+  --shadow-2: var(--shadow-2);
+  --shadow-3: var(--shadow-3);
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+  html {
+    background: var(--bg);
+    -webkit-tap-highlight-color: transparent;
+    /* 100% keeps the reader's own text size; everything below is in rem. */
+    font: 100% / 1.5 var(--font-sans);
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--accent-tint-2);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent-text);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
+  }
+}
+
+/* ── Type scale. Tracking tightens as size grows; leading tightens with it. ── */
+@utility t-hero {
+  font-size: clamp(3rem, 7.4vw, 6.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 650;
+}
+@utility t-title {
+  font-size: clamp(2.125rem, 4.4vw, 3.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.028em;
+  font-weight: 650;
+}
+@utility t-headline {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.016em;
+  font-weight: 600;
+}
+@utility t-lead {
+  font-size: clamp(1.1875rem, 1.6vw, 1.375rem);
+  line-height: 1.45;
+  letter-spacing: -0.012em;
+}
+@utility t-body {
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+@utility t-callout {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+@utility t-caption {
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  letter-spacing: 0.005em;
+}
+@utility t-overline {
+  font-size: 0.75rem;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ── Feedback on press, instantly. ── */
+@utility press {
+  transition: transform 100ms ease-out;
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+/* ── Materials ── */
+@utility material {
+  background: var(--material);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+}
+@utility material-thick {
+  background: var(--material-thick);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(180%);
+}
+
+/* Entrances that need no JavaScript, so the first view is never blank. */
+.rise {
+  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--d, 0s);
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+}
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: var(--accent-text);
+  animation: caret 1.1s steps(1) infinite;
+}
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ── The person's settings win. ── */
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: fade 0.2s ease both;
+  }
+  .caret {
+    display: none;
+  }
+  .press:active {
+    transform: none;
+  }
+  /* A mark with an intro is served in its "before" pose; show it finished, from the first paint. */
+  [data-part="lens"],
+  [data-part="head"],
+  [data-part="eye"],
+  [data-part="crescent"] {
+    transform: none !important;
+  }
+  [data-part="crescent"] {
+    opacity: 1 !important;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .material,
+  .material-thick {
+    background: var(--bg);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  /* The blurred edge under the bar is translucency too. */
+  .scroll-edge {
+    display: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --line: #8f8883;
+    --line-strong: #6f6a69;
+    --ink-2: #3a3434;
+    --ink-3: #4a4443;
+  }
+  /* The plum band (and the whole page in dark mode, below) needs the light-on-dark version. */
+  .theme-dark {
+    --line: #6f6467;
+    --line-strong: #8a7e82;
+    --ink-2: #ddd5d0;
+    --ink-3: #c9c0bb;
+  }
+  .material,
+  .material-thick {
+    background: var(--bg);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-color: var(--line-strong);
+  }
+  .scroll-edge {
+    display: none;
+  }
+}
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+  :root {
+    --line: #6f6467;
+    --line-strong: #8a7e82;
+    --ink-2: #ddd5d0;
+    --ink-3: #c9c0bb;
+  }
+}
+
+/* ── The landing intro: the app's entrance as a loading screen ──
+   Shown only while <html data-intro> (set before paint, once per session).
+   Same ground as the app: burgundy, grain, vignette, plum in dark mode. */
+.site-intro {
+  display: none;
+}
+html[data-intro] .site-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--brand-burgundy);
+  color: var(--brand-cream);
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  /* If the page's script never runs, the curtain still lifts. */
+  animation: site-intro-failsafe 600ms ease 4.5s forwards;
+}
+html[data-intro] .site-intro.site-intro-out {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+html[data-intro] {
+  overflow: hidden;
+}
+@keyframes site-intro-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.site-intro-name {
+  animation: site-intro-rise 520ms cubic-bezier(0.16, 1, 0.3, 1) 1500ms both;
+}
+@keyframes site-intro-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+.site-intro-grain,
+.site-intro-vignette,
+.site-intro-plum {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.site-intro-grain {
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 .97  0 0 0 0 .92  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+.site-intro-vignette {
+  background: radial-gradient(ellipse at center, transparent 45%, rgb(30 0 9 / 0.5) 100%);
+}
+.site-intro-plum {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  .site-intro-plum {
+    display: block;
+    background: radial-gradient(ellipse 90% 75% at 50% 35%, transparent 20%, #171315 100%);
+  }
+}

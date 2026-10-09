@@ -1,0 +1,8 @@
+# Secrets: the real key lives only in .env.
+.env
+!.env.example
+
+# Local Python environment and caches.
+.venv/
+__pycache__/
+.pytest_cache/

@@ -1,0 +1,6 @@
+# Versions installed and tested on 9 Oct 2026 with Python 3.13.2. Needs Python 3.10+.
+google-genai==2.29.0
+python-dotenv==1.2.4
+# Comes with google-genai; listed because the provider imports it directly.
+httpx==0.28.1
+pytest==9.1.1
